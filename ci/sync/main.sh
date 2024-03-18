@@ -91,6 +91,8 @@ get_full_log() {
     $DEFI_CLI_CMD listtokens '{"limit":1000000}'
     echo "-- getburninfo --"
     $DEFI_CLI_CMD getburninfo
+    echo "-- listgovs --"
+    $DEFI_CLI_CMD listgovs
 }
 
 rollback_and_log() {
