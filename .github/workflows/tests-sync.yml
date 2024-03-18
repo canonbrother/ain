@@ -82,7 +82,8 @@ jobs:
 
   generate-matrix:
       if: contains(github.event.pull_request.labels.*.name, 'ci/sync') || github.event_name == 'workflow_dispatch'
-      runs-on: [self-hosted, linux, x64]
+      # runs-on: [self-hosted, linux, x64]
+      runs-on: [ubuntu-latest]
 
       # Add "id-token" with the intended permissions.
       permissions:
