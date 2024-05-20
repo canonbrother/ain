@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       block_ranges:
-        description: 'Block ranges: Format: "<start-block-1> <start-block-2>" 
+        description: 'Block ranges: Format: "<start-block-1> <start-block-2>"
           Eg: "350000 50000 750000".
           Default: All available ranges when empty'
         required: false
@@ -28,7 +28,8 @@ env:
 jobs:
   build:
     if: contains(github.event.pull_request.labels.*.name, 'ci/sync') || github.event_name == 'workflow_dispatch'
-    runs-on: [self-hosted, linux, x64, builder]
+    # runs-on: [self-hosted, linux, x64, builder]
+    runs-on: [ubuntu-latest]
     env:
       CARGO_INCREMENTAL: 0
     steps:
@@ -81,7 +82,8 @@ jobs:
 
   generate-matrix:
       if: contains(github.event.pull_request.labels.*.name, 'ci/sync') || github.event_name == 'workflow_dispatch'
-      runs-on: [self-hosted, linux, x64]
+      # runs-on: [self-hosted, linux, x64]
+      runs-on: [ubuntu-latest]
 
       # Add "id-token" with the intended permissions.
       permissions:
